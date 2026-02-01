@@ -127,8 +127,8 @@ window.addEventListener("touchmove", e => {
     mouse.x = e.touches[0].clientX;
     mouse.y = e.touches[0].clientY;
   }
-  e.preventDefault(); // لمنع تمرير الصفحة أثناء اللمس
-}, { passive: false });
+   // لمنع تمرير الصفحة أثناء اللمس
+}, { passive: true  });
 
 window.addEventListener("touchend", () => {
   mouse.x = null;
