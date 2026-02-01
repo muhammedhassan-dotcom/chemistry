@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ===== Basic Meta ===== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Page Title ===== -->
+  <title>Chemistry Lab</title>
+
+  <!-- ===== Stylesheets ===== -->
+
+  <link rel="stylesheet" href="css/pages/home.css" />
+  <link rel="stylesheet" href="css/layout/header.css" />
+
+
+</head>
+
+
+
+<body>
+
+<canvas id="bubbleCanvas"></canvas>
+
+  <!-- =========================================================
+       Gooey Navigation Header
+       Header ثابت فيه قائمة تنقل مع تأثير gooey
+  ========================================================== -->
+  <header class="main-header">
+    <div class="gooey-nav-container">
+
+      <!-- Navigation -->
+      <nav>
+        <ul>
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Gooey moving effect element -->
+      <div class="effect" id="gooeyEffect"></div>
+
+    </div>
+  </header>
+
+
+
+
+<main class="page">
+  <section class="hero">
+  <div class="hero-image"></div>
+  <div class="hero-content">
+    <h1>Mohamed</h1>
+    <p>
+      Data Scientist & Engineer<br>
+      Turning data into insight
+    </p>
+  </div>
+
+
+</section>
+
+<!-- features-section.html -->
+<section class="features-section">
+  <div class="container">
+    <div class="intro">
+      <h2>مميزات المنصة 🧠</h2>
+      <p>أدوات تعليمية متكاملة تساعدك تتفوق بسرعة وسهولة!</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="icon"><i class="fas fa-video"></i></div>
+        <h5>شروحات فيديو جذابة</h5>
+        <p>دروس فيديو مبسطة تشرح كل نقطة بطريقة ممتعة وسهلة الفهم.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon"><i class="fas fa-book"></i></div>
+        <h5>مذكرات وملخصات</h5>
+        <p>ملخصات مركزة تساعدك تراجع بسرعة وتستفيد بأقصى شكل ممكن.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon"><i class="fas fa-pencil-alt"></i></div>
+        <h5>تدريبات تفاعلية</h5>
+        <p>أسئلة تفاعلية بعد كل درس لتثبيت المعلومة وتحسين مهاراتك.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon"><i class="fas fa-tasks"></i></div>
+        <h5>اختبارات دورية</h5>
+        <p>نقيس مستواك بشكل دوري ونساعدك على التطوير المستمر.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon"><i class="fas fa-headset"></i></div>
+        <h5>دعم مباشر</h5>
+        <p>أي سؤال أو استفسار؟ مدرسون متخصصون معك خطوة بخطوة.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon"><i class="fas fa-headset"></i></div>
+        <h5>دعم مباشر</h5>
+        <p>أي سؤال أو استفسار؟ مدرسون متخصصون معك خطوة بخطوة.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon"><i class="fas fa-headset"></i></div>
+        <h5>دعم مباشر</h5>
+        <p>أي سؤال أو استفسار؟ مدرسون متخصصون معك خطوة بخطوة.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon"><i class="fas fa-headset"></i></div>
+        <h5>دعم مباشر</h5>
+        <p>أي سؤال أو استفسار؟ مدرسون متخصصون معك خطوة بخطوة.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  <section class="content">
+    <h2>Section 2</h2>
+    <p>محتوى أطول...</p>
+  </section>
+
+  
+  <section class="content">
+    <h2>Section 2</h2>
+    <p>محتوى أطول...</p>
+  </section>
+
+  
+  <section class="content">
+    <h2>Section 2</h2>
+    <p>محتوى أطول...</p>
+  </section>
+
+
+</main>
+
+
+  <!-- =========================================================
+       SVG Filter
+       فلتر الـ gooey المستخدم في الهيدر
+       (مخفي ومش بيظهر في الصفحة)
+  ========================================================== -->
+  <svg>
+    <defs>
+      <filter id="gooey">
+        <feGaussianBlur
+          in="SourceGraphic"
+          stdDeviation="10"
+          result="blur"
+        />
+        <feColorMatrix
+          in="blur"
+          mode="matrix"
+          values="
+            1 0 0 0 0  
+            0 1 0 0 0  
+            0 0 1 0 0  
+            0 0 0 18 -7
+          "
+          result="gooey"
+        />
+        <feComposite
+          in="SourceGraphic"
+          in2="gooey"
+          operator="atop"
+        />
+      </filter>
+    </defs>
+  </svg>
+
+
+
+  <!-- Container إضافي (موجود لكن غير مستخدم حاليًا) -->
+  <div id="lanyard-container"></div>
+
+  <!-- =========================================================
+       Scripts
+       تحميل ملفات JavaScript
+       main.js للخلفية
+       header.js للهيدر
+  ========================================================== -->
+  <script type="module" src="js/background/bubbles.js"></script>
+
+  <script src="js/ui/header-nav.js"></script>
+
+
+</body>
+</html>

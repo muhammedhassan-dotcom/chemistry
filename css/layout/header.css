@@ -1,0 +1,415 @@
+/* =========================================================
+   Global CSS Variables
+   ألوان مستخدمة في الـ particles والـ effects
+   تقدر تغيّرهم من هنا مرة واحدة
+========================================================= */
+:root {
+  --color-1: #ffffff;
+  --color-2: #ff4081;
+  --color-3: #40c4ff;
+  --color-4: #69f0ae;
+}
+
+/* =========================================================
+   Main Header
+   الهيدر الثابت أعلى الصفحة
+========================================================= */
+.main-header {
+  position: fixed;              /* ثابت أثناء التمرير */
+  top: 0;
+  left: 0;
+  right: 0;
+
+  background: rgba(17, 24, 39, 0.8); /* خلفية شبه شفافة */
+  backdrop-filter: blur(10px);      /* تأثير زجاجي */
+
+  padding: 1rem 2rem;
+  z-index: 10;                   /* فوق الخلفية */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* =========================================================
+   Gooey Nav Wrapper
+   الحاوية اللي جواها الـ nav والـ effect
+========================================================= */
+.gooey-nav-container {
+  position: relative; /* أساس تموضع الـ effect */
+}
+
+/* =========================================================
+   Navigation List
+========================================================= */
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2em;
+
+  padding: 0;
+  margin: 0;
+
+  position: relative;
+  z-index: 3; /* فوق الـ gooey effect */
+}
+
+/* عنصر القائمة */
+nav ul li {
+  position: relative;
+  cursor: pointer;
+  border-radius: 100vw;          /* شكل كبسولة */
+  transition: color 0.3s ease;   /* تغيير لون ناعم */
+}
+
+/* الرابط داخل كل عنصر */
+nav ul li a {
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+
+  padding: 0.6em 1.2em;
+  position: relative;
+
+  font-weight: 500;
+  letter-spacing: 0.5px;
+
+  z-index: 3; /* فوق الـ effect */
+}
+
+/* لون الرابط عند العنصر النشط */
+nav ul li.active a {
+  color: black;
+}
+
+/* =========================================================
+   Gooey Effect Element
+   العنصر المتحرك اللي بيظهر تحت العنصر النشط
+========================================================= */
+.effect {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 0;     /* بيتحدد ديناميكيًا بالـ JS */
+  height: 0;
+
+  pointer-events: none;          /* يمنع التفاعل */
+  display: grid;
+  place-items: center;
+
+  z-index: 2;                    /* تحت النص وفوق الخلفية */
+  border-radius: 100vw;
+
+  background: white;
+  mix-blend-mode: lighten;       /* دمج لوني */
+  filter: url(#gooey);           /* SVG gooey filter */
+
+  transition: all 0.3s ease;     /* حركة ناعمة */
+}
+
+/* =========================================================
+   Particle Animation (عند الضغط)
+   الجسيمات اللي بتطلع وقت الضغط على عنصر
+========================================================= */
+.particle,
+.point {
+  display: block;
+  opacity: 0;
+
+  width: 12px;
+  height: 12px;
+
+  border-radius: 100%;
+  transform-origin: center;
+}
+
+/* الحاوية المتحركة للجسيم */
+.particle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  animation: particle var(--time) ease 1;
+}
+
+/* النقطة نفسها (اللون واللمعة) */
+.point {
+  background: var(--color);
+  box-shadow: 
+    0 0 10px var(--color),
+    0 0 25px var(--color);
+
+  opacity: 1;
+  animation: point var(--time) ease 1;
+}
+
+/* =========================================================
+   Animations
+========================================================= */
+
+/* حركة الجسيم من مكانه ويرجع */
+@keyframes particle {
+  0% {
+    transform: translate(var(--start-x), var(--start-y));
+    opacity: 1;
+  }
+  70% {
+    transform: translate(var(--end-x), var(--end-y));
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+}
+
+/* تكبير وتصغير النقطة */
+@keyframes point {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+
+/* =====================
+   Nav Hover Polish
+   ===================== */
+
+/* حركة خفيفة للعنصر */
+nav ul li {
+  transition: transform 0.25s ease;
+}
+
+/* عند المرور بالماوس */
+nav ul li:hover {
+  transform: translateY(-3px) scale(1.03);
+}
+
+/* تحسين الإحساس للنص */
+nav ul li a {
+  transition: color 0.25s ease, letter-spacing 0.25s ease;
+}
+
+/* لمسة بسيطة للنص عند hover */
+nav ul li:hover a {
+  letter-spacing: 0.8px;
+}
+
+
+/* =========================================================
+   Main Header
+   الهيدر الثابت أعلى الصفحة
+========================================================= */
+.main-header {
+  position: fixed;              /* ثابت أثناء التمرير */
+  top: 0;
+  left: 0;
+  right: 0;
+
+  background: rgba(17, 24, 39, 0.8); /* خلفية شبه شفافة */
+  backdrop-filter: blur(10px);      /* تأثير زجاجي */
+
+  padding: 1rem 2rem;
+  z-index: 10;                   /* فوق الخلفية */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* =========================================================
+   Gooey Nav Wrapper
+========================================================= */
+.gooey-nav-container {
+  position: relative; /* أساس تموضع الـ effect */
+}
+
+/* =========================================================
+   Navigation List
+========================================================= */
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2em;
+
+  padding: 0;
+  margin: 0;
+
+  position: relative;
+  z-index: 3; /* فوق الـ gooey effect */
+}
+
+/* عنصر القائمة */
+nav ul li {
+  position: relative;
+  cursor: pointer;
+  border-radius: 100vw;          
+  transition: color 0.3s ease;
+}
+
+/* الرابط داخل كل عنصر */
+nav ul li a {
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+
+  padding: 0.6em 1.2em;
+  position: relative;
+
+  font-weight: 500;
+  letter-spacing: 0.5px;
+
+  z-index: 3;
+}
+
+/* لون الرابط عند العنصر النشط */
+nav ul li.active a {
+  color: black;
+}
+
+/* =========================================================
+   Gooey Effect Element
+========================================================= */
+.effect {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 0;     
+  height: 0;
+
+  pointer-events: none;          
+  display: grid;
+  place-items: center;
+
+  z-index: 2;                    
+  border-radius: 100vw;
+
+  background: white;
+  mix-blend-mode: lighten;       
+  filter: url(#gooey);           
+
+  transition: all 0.3s ease;     
+}
+
+/* =========================================================
+   Particle Animation
+========================================================= */
+.particle,
+.point {
+  display: block;
+  opacity: 0;
+
+  width: 12px;
+  height: 12px;
+
+  border-radius: 100%;
+  transform-origin: center;
+}
+
+.particle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  animation: particle var(--time) ease 1;
+}
+
+.point {
+  background: var(--color);
+  box-shadow: 
+    0 0 10px var(--color),
+    0 0 25px var(--color);
+
+  opacity: 1;
+  animation: point var(--time) ease 1;
+}
+
+/* =========================================================
+   Animations
+========================================================= */
+@keyframes particle {
+  0% {
+    transform: translate(var(--start-x), var(--start-y));
+    opacity: 1;
+  }
+  70% {
+    transform: translate(var(--end-x), var(--end-y));
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes point {
+  0% { transform: scale(0); opacity: 0; }
+  40% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(0); opacity: 0; }
+}
+
+/* =====================
+   Nav Hover Polish
+===================== */
+nav ul li { transition: transform 0.25s ease; }
+nav ul li:hover { transform: translateY(-3px) scale(1.03); }
+nav ul li a { transition: color 0.25s ease, letter-spacing 0.25s ease; }
+nav ul li:hover a { letter-spacing: 0.8px; }
+
+/* =========================================================
+   Header Mobile Adjustments
+========================================================= */
+@media screen and (max-width: 768px) {
+
+  .main-header {
+    padding: 0.6rem 0.8rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  nav ul {
+    display: flex;
+    flex-wrap: wrap;          /* يسمح بالنزول لسطر جديد */
+    justify-content: center;  /* توسيط حقيقي */
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0;
+    margin: 0;
+  }
+
+  nav ul li {
+    list-style: none;
+  }
+
+  nav ul li a {
+    display: block;
+    padding: 0.4em 0.7em;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+}
+
+/* دعم إضافي للموبايلات الصغيرة جدًا */
+@media screen and (max-width: 360px) {
+  nav ul li a {
+    font-size: 0.75rem;
+    padding: 0.35em 0.6em;
+  }
+}
+

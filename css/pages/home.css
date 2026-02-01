@@ -1,0 +1,456 @@
+  /* =========================================================
+    Body
+    ========================================================= */
+  body {
+    margin: 0;
+    min-height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    font-family: Inter, Poppins, system-ui, sans-serif;
+
+    /* خلفية شعاعية جميلة */
+    background: radial-gradient(
+      circle at 15% 20%,
+      #08102a 0%,
+      #04030a 35%,
+      #000 100%
+    );
+
+    color: #e8f1ff;
+    position: relative;
+  }
+
+  /* =========================================================
+    Background Canvas (الفقاعات)
+  ========================================================= */
+  canvas#bubbleCanvas {
+    position: fixed;         /* ثابت في الشاشة */
+    inset: 0;                /* يغطي كل الشاشة */
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 0;              /* تحت كل العناصر */
+    pointer-events: none;    /* لا تتأثر بالضغط أو اللمس */
+    opacity: 0;
+    animation: canvasFadeIn 1.4s ease forwards;
+  }
+
+  @keyframes canvasFadeIn {
+    to { opacity: 1; }
+  }
+
+  /* =========================================================
+    Header (الهيدر الثابت)
+  ========================================================= */
+  .main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 60;             /* فوق كل شيء */
+  }
+
+  /* =========================================================
+    Main Content
+  ========================================================= */
+  main {
+    position: relative;
+    z-index: 40;
+    text-align: center;
+    margin-top: 70px;        /* مسافة أسفل الهيدر */
+  }
+
+  /* =========================================================
+    Sections
+  ========================================================= */
+  section {
+    min-height: 100vh;
+    padding: 120px 10vw;     /* المسافة حول المحتوى */
+    box-sizing: border-box;
+  }
+
+  /* =========================================================
+    Hero Section (الصورة + المحتوى)
+  ========================================================= */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* الكمبيوتر: محتوى شمال وصورة يمين */
+    padding: 0 8vw;                 /* مسافة جانبية ديناميكية */
+    gap: 40px;                       /* المسافة بين المحتوى والصورة */
+    position: relative;
+  }
+
+  /* =========================================================
+    Hero Content (الجزء الشمالي)
+  ========================================================= */
+  .hero-content {
+    position: relative;
+    width: 50%;                       /* على الكمبيوتر نص الصفحة */
+    padding: 48px 56px;               /* المسافة داخل الصندوق */
+    
+    background: linear-gradient(
+      135deg,
+      rgba(18, 24, 55, 0.65),
+      rgba(10, 14, 35, 0.45)
+    );
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 22px;
+    border: 1px solid rgba(8, 4, 4, 0.15);
+
+    box-shadow:
+      0 30px 80px rgba(0, 0, 0, 0.55),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+    color: #f2f6ff;
+  }
+
+  /* =========================================================
+    Hero Image (الجانب الأيمن)
+  ========================================================= */
+  .hero-image {
+    flex: 1;
+    height: 70vh;
+    background-image: url("../../images/mohamed3.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    /* تحكم في مكان الصورة */
+    background-position: 99% 90%; /* مثال: X = 70%, Y = 20% */
+  }
+
+
+  /* =========================================================
+    Features Section
+  ========================================================= */
+  .features-section {
+    padding: 60px 20px; /* قللنا البادينج */
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    background: transparent;
+  }
+
+  .features-section .container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* =========================================================
+    Intro Section
+  ========================================================= */
+  .features-section .intro {
+    text-align: center;
+    margin-bottom: 40px;
+
+    /* نفس خلفية الكروت */
+    background: linear-gradient(
+      135deg,
+      rgba(18, 24, 55, 0.85),
+      rgba(10, 14, 35, 0.75)
+    );
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow:
+      0 25px 60px rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+    padding: 20px 30px; /* صغرنا البادينج */
+    max-width: 550px;   /* صغرنا الحجم */
+    margin-left: auto;
+    margin-right: auto;
+    color: #f2f6ff;
+  }
+
+  .features-section .intro h2 {
+    font-size: 1.8rem;  /* أصغر */
+    color: #1db7ff;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 0 3px 8px rgba(0,0,0,0.4);
+  }
+
+  .features-section .intro p {
+    font-size: 0.95rem;
+    color: #e0eaff;
+    line-height: 1.5;
+    text-shadow: 0 1.5px 5px rgba(0,0,0,0.3);
+  }
+
+  /* =========================================================
+    Features Grid
+  ========================================================= */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;               /* المسافة بين الكروت */
+    justify-items: center;
+    margin-top: 30px;
+  }
+
+  /* =========================================================
+    Feature Card
+  ========================================================= */
+  .feature-card {
+    background: linear-gradient(
+      135deg,
+      rgba(18, 24, 55, 0.85),
+      rgba(10, 14, 35, 0.75)
+    );
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow:
+      0 20px 50px rgba(0, 0, 0, 0.45),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+    padding: 20px 16px;      /* تقليل البادينج لتناسب الحجم الجديد */
+    color: #f2f6ff;
+    text-align: center;
+    width: 100%;
+    max-width: 240px;        /* أصغر حجم للكرت */
+    transition: all 0.4s ease;
+
+    /* لتباعد الكروت عن بعضها */
+    margin: 0 auto;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* نفس حجم الكروت الجديدة */
+    gap: 45px;  /* المسافة بين كل كرت وكرت */
+    justify-items: center; /* توسيط الكروت داخل الأعمدة */
+    margin-top: 30px;      /* مسافة بين الانترو والـ grid */
+  }
+
+
+  /* تعديل الهوفير */
+  .feature-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
+    background: rgba(10, 14, 35, 0.85);
+  }
+
+  .feature-card .icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #1db7ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px auto;
+    font-size: 2rem;
+    color: #fff;
+    transition: all 0.3s ease;
+  }
+
+  .feature-card:hover .icon {
+    background: #f17618;
+    transform: rotate(15deg) scale(1.2);
+  }
+
+  .feature-card h5 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #1db7ff;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  }
+
+  .feature-card p {
+    font-size: 0.9rem;
+    color: #e0eaff;
+    line-height: 1.5;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.25);
+  }
+
+
+
+
+
+
+
+
+
+  /* =========================================================
+    Headings
+  ========================================================= */
+  h1 {
+    font-size: 2.4rem;
+    margin: 0 0 8px 0;
+    text-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+  }
+
+  h2 {
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+  }
+
+  /* =========================================================
+    Paragraphs
+  ========================================================= */
+  p {
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.7;
+    opacity: 0.9;
+  }
+
+  /* =========================================================
+    Smooth Scroll
+  ========================================================= */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  
+
+
+  /* ==== Canvas يغطي كامل الشاشة ==== */
+  canvas#bubbleCanvas {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  /* ==== Font size adjustments ==== */
+  h1 {
+    font-size: 1.8rem;             /* أصغر على الموبايل */
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  /* ==== Sections padding adjustments ==== */
+  section {
+    padding: 100px 5vw;             /* مسافة جانبية على الموبايل */
+  }
+
+
+
+ /* =========================================================
+   Responsive Layout (Mobile & Tablet) — FINAL VERSION
+========================================================= */
+
+/* ================== Tablets (<= 1024px) ================== */
+@media (max-width: 1024px) {
+
+  .hero {
+    padding: 0 6vw;
+    gap: 24px;
+    align-items: center;
+    min-height: 120vh;   /* ⬅️ نكبر الهيرو نفسه بنسبة ~30% */
+  }
+
+  .hero-content {
+    width: 38%;
+    padding: 32px 26px;
+    min-height: 50vh;
+  }
+
+  .hero-image {
+    width: 62%;
+    height: 100%;
+    min-height: 100vh;   /* ⬅️ نضمن الامتداد العمودي */
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .feature-card {
+    max-width: 260px;
+  }
+}
+
+/* ================== Mobile (<= 768px) ================== */
+@media (max-width: 768px) {
+
+  .hero {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5vw;
+    gap: 16px;
+    min-height: 115vh;   /* ⬅️ أطول */
+  }
+
+  .hero-content {
+    width: 34%;
+    padding: 26px 18px;
+    min-height: 42vh;
+    border-radius: 16px;
+  }
+
+  .hero-image {
+    width: 66%;
+    height: 100%;
+    min-height: 95vh;   /* ⬅️ أطول فعليًا */
+    background-size: contain;
+    background-position: center;
+  }
+
+  .features-section {
+    padding: 40px 0;
+  }
+
+  .features-section .container {
+    padding: 0 5vw;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 26px;
+  }
+
+  .feature-card {
+    width: 100%;
+    max-width: 80%;
+    margin: 0 auto;
+  }
+}
+
+/* ================== Small Mobile (<= 480px) ================== */
+@media (max-width: 480px) {
+
+  .hero {
+    gap: 12px;
+    min-height: 110vh;   /* ⬅️ أطول */
+  }
+
+  .hero-content {
+    width: 30%;
+    padding: 22px 14px;
+    min-height: 38vh;
+  }
+
+  .hero-image {
+    width: 70%;
+    height: 100%;
+    min-height: 90vh;   /* ⬅️ أطول */
+  }
+
+  h1 {
+    font-size: 1.35rem;
+  }
+
+  h2 {
+    font-size: 1rem;
+  }
+
+  .feature-card {
+    max-width: 60%;
+    padding: 16px 12px;
+  }
+}
