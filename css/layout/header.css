@@ -24,7 +24,7 @@
   backdrop-filter: blur(10px);      /* تأثير زجاجي */
 
   padding: 1rem 2rem;
-  z-index: 10;                   /* فوق الخلفية */
+  z-index: 9999;                  /* فوق الخلفية */
 
   display: flex;
   justify-content: center;
@@ -220,7 +220,7 @@ nav ul li:hover a {
   backdrop-filter: blur(10px);      /* تأثير زجاجي */
 
   padding: 1rem 2rem;
-  z-index: 10;                   /* فوق الخلفية */
+                  /* فوق الخلفية */
 
   display: flex;
   justify-content: center;
